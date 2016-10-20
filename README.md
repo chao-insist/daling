@@ -1,0 +1,2 @@
+# daling
+my object1
