@@ -1,6 +1,6 @@
 /* CSS Document */
  
-body, button, select, textarea, input, label, option, fieldset, legend{font-family: Helvetica Neue,Tahoma,Verdana;font-size: 11px;line-height: 18px;color: #666;}
+body, button, select, textarea, input, label, option, fieldset, legend{font-family:"Helvetica Neue","Hiragino Sans GB","Microsoft YaHei","WenQuanYi Micro Hei",sans-serif;font-size: 11px;line-height: 18px;color: #666;}
 body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, form, fieldset, legend, input, textarea, button, p, blockquote, th, td{margin: 0;padding: 0;}
 textarea{resize: none}
 .clear{height:1px;overflow:hidden;clear:both;}

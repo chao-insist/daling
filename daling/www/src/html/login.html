@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" href="../css/main.css">
+	<link rel="stylesheet" href="../css/common.css">
+	<script type="text/javascript" src="../js/lib/jquery-1.8.3.js"></script>
+	<script type="text/javascript" src="../js/request.js"></script>
+	<script type="text/javascript" src="../js/login.js"></script>
+</head>
+<body>
+	<div id="login-header">
+		<a href="javascript:;">
+			<img src="../img/logo.png" alt="">
+		</a>
+	</div>
+	<div id="login">
+		<div class="login">
+			<div class="login-wrap">
+				<div class="login-panel">
+					<h2>达令会员</h2>
+					<div class="tab">
+						<a href="javascript:;" class="active">登录</a>
+						<a href="javascript:;">注册</a>
+					</div>
+					<!-- 登录 -->
+					<form action="" class="login-form form">
+						<div class="user">
+							<label for="txt-login" class="icon">
+								<span class="icon-txt"></span>
+							</label>
+							<input type="text" id="txt-login" class="txt" placeholder="请输入您的手机号码">		
+						</div>
+						<div class="pass">
+							<label for="pas-login" class="icon">
+								<span class="icon-pas"></span>
+							</label>
+							<input type="password" id="pas-login" class="pas" placeholder="请输入密码">
+						</div>
+						<p>
+							<a href="javascript:;">忘记密码？</a>
+						</p>
+						<button type="submit" class="submit">登录</button>
+					</form>
+					<!-- 注册 -->
+					<form action="" class="register-form form" style="display: none;">
+						<div class="user">
+							<label for="txt-register" class="icon">
+								<span class="icon-txt"></span>
+							</label>
+							<input type="text" class="txt" id="txt-register" placeholder="请输入您的手机号码">	
+							<span class="tip">
+								请输入手机号
+								<i></i>
+							</span>	
+							<span class="tip">				请输入正确的手机号
+								<i></i>
+							</span>	
+						</div>
+						<div class="verify">
+							<label for="very" class="icon">
+								<span class="icon-pas"></span>
+							</label>
+							<input type="text" id="very" class="pas" placeholder="请输入验证码">
+							<img src="../img/index0.png" alt="" class="code">
+							<span class="tip">
+								请正确输入验证码
+								<i></i>
+							</span>
+						</div>
+						<div class="msg">
+							<label for="msg" class="icon">
+								<span class="icon-msg"></span>
+							</label>
+							<input type="text" id="msg" placeholder="请输入短信验证码">
+							<span class="tip">
+								请输入短信验证码
+								<i></i>
+							</span>
+							<button class="get-msg">获取验证码</button>
+						</div>
+						<div class="pass">
+							<label for="pas-register" class="icon">
+								<span class="icon-pas"></span>
+							</label>
+							<input type="password" id="pas-register" class="pas" placeholder="请输入密码">
+							<span class="tip">
+								请输入密码
+								<i></i>
+							</span>
+							<p>请接收服务条款</p>
+						</div>
+						<div class="agreement">
+							<input type="checkbox" name="" id="agree">
+							我已同意并阅读<a href="javascript:;">《达令用户注册协议》</a>
+						</div>
+						<button type="submit" class="submit" disabled>注册</button>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div id="footer"></div>
+</body>
+</html>
