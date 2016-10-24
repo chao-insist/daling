@@ -97,7 +97,7 @@ $(function(){
 		});
 	}
 	
-	$('#txt-register').on('blur',function(){
+	$('#txt-register,#txt-login').on('blur',function(){
 		var reg = /^1(3|4|5|7|8)\d{9}$/;
 		if(reg.test($(this).val())){
 			$(this).siblings('.tip').css('display','none');
@@ -137,8 +137,91 @@ $(function(){
 			})
 			return false;
 		}
-		else{
-			
-		};
+
+		var arrImg = [];
+		for(var j = 0;j < 5;j++){
+			var str = '../img/index'+j+'.png';
+			arrImg.push(str);
+		}
+		var arrUp = ['吕A苏韩','薛吴郎苗','C任F何','孙G朱鲁','H5冯A'];
+		var arrLow = ['吕a苏韩','薛吴郎苗','c任f何','孙g朱鲁','h5冯a'];
+		for(var i = 0;i < arrImg.length;i++){
+			if($('#very').next().attr('src') == arrImg[i]){
+				//console.log($('#very').next().attr('src'));
+				//console.log(arrImg[i]);
+				if($('#very').val() == arrUp[i] || $('#very').val() == arrLow[i]){
+					//console.log(2);
+					$('#very').siblings('.tip').css('display','none');
+				}else{
+					$('#very').siblings('.tip').css('display','block');
+					$('#very').focus();
+					return false;
+				}
+			}
+		}
+
+
+		var reg = /^1(3|4|5|7|8)\d{9}$/;
+		if(reg.test($('#txt-register').val())){
+			$('#txt-register').siblings('.tip').css('display','none');
+			suceess($('#txt-register'));
+		}else {
+			if($('#txt-register').val().length == 0){
+				$('#txt-register').siblings('.tip').eq(1).css('display','none');
+				$('#txt-register').siblings('.tip').eq(0).css('display','block');
+			}else{
+				$('#txt-register').siblings('.tip').eq(0).css('display','none');
+				$('#txt-register').siblings('.tip').eq(1).css('display','block');
+			}
+			err($('#txt-register'));
+			return false;
+		}
+
+		$('.tab a').addClass('active');
+		$('.form-register').css('display','none');
+		$('.form-login').css('display','block');
+		var $name = $('#txt-register').val();
+		var $pass = $('#pas-register').val();
+		//console.log($name);
+		oCookie.addCookie('name',$name,40);
+		oCookie.addCookie('password',$pass,40);
 	})
+
+	/*登录*/
+
+	$('.login-form').submit(function(){
+		var reg = /^1(3|4|5|7|8)\d{9}$/;
+			if(reg.test($('#txt-login').val())){
+				$('#txt-login').siblings('.tip').css('display','none');
+				suceess($('#txt-login'));
+			}else {
+				if($('#txt-login').val().length == 0){
+					$('#txt-login').siblings('.tip').eq(1).css('display','none');
+					$('#txt-login').siblings('.tip').eq(0).css('display','block');
+				}else{
+					$('#txt-login').siblings('.tip').eq(0).css('display','none');
+					$('#txt-login').siblings('.tip').eq(1).css('display','block');
+				}
+				err($('#txt-login'));
+				return false;
+			}
+			/*console.log(oCookie.getCookie('name') );
+			return false;*/
+			var $getName = oCookie.getCookie('name');
+			var $getPass = oCookie.getCookie('password');
+		if($('#txt-login').val() ==  $getName && $('#pas-login').val() == $getPass){
+			$('.err').css('display','none');
+			//alert('登录成功')
+			window.open('../index.html');
+		}else if($('#txt-login').val() ==  $getName && $('#pas-login').val() != $getPass){
+			$('.no-match').css('display','block').siblings('.err').css('display','none');
+			return false;
+		}
+		else if($('#txt-login').val() !=  $getName){
+			$('.no-exit').css('display','block').siblings('.err').css('display','none');
+			return false;
+		}
+	})
+
 })
+

@@ -12,7 +12,7 @@ $(function(){
 		}else{
 			//判断如果显示的是当前点击的对象则关闭侧边栏。
 			if($(obj).is(':hidden')){
-				$(obj).css('display','block').siblings('.show').css('display','none');
+				 $(obj).css('display','block').siblings('.show').css('display','none');
 			}else{
 				$('#sidebar').animate({'width':40},500,function(){
 					$('.show').css('display','none');
@@ -23,15 +23,7 @@ $(function(){
 		}
 	}
 	$('.backtop').fadeOut();
-	/*$('.shopcar').hover(function(){
-		$(this).css('background','#e34755');
-		$(this).children('.cut-line').css('visibility','hidden');
-	},function(){
-		$(this).css('background','#333');
-		$(this).children('.cut-line').css('visibility','visible');
-	})*/
-	//$('.show').css('display','none');
-	$('.shopcar').on('mouseover',function(){
+	$('.shopcarer').on('mouseover',function(){
 		$(this).css('background','#e34755');
 		$(this).children('.cut-line').css('visibility','hidden');
 	}).on('mouseout',function(){
@@ -41,18 +33,18 @@ $(function(){
 		toggle('.cart-toggle');
 	});
 	
-	$('.discount').click(function(){
+	$('.discounter').click(function(){
 		toggle('.money-toggle');
 	})
 
-	$('.collect').click(function(){
+	$('.collector').click(function(){
 		toggle('.collect-toggle');
 	})
 	$('.sidebar-data .close').click(function(){
 		$('#sidebar').animate({'width':40},500);
 		$(this).css('display','none');
 	})
-	$('.discount,.collect').hover(function(){
+	$('.discounter,.collector').hover(function(){
 		$(this).css('background','#e34755');
 		$(this).find('.pop').css('display','block');
 	},function(){
@@ -73,5 +65,125 @@ $(function(){
 	$('.backtop').click(function(){
 		$('html,body').animate({'scrollTop':0},1000);
 	})
-	/*侧边栏弹出*/
+})
+
+/*二级导航*/
+
+$(function(){
+	$('.clasify').hover(function(){
+	$('.icon-up').css('display','none').siblings().css('display','block');
+	$('.dd').css('display','block');
+},function(){
+	$('.icon-down').css('display','none').siblings().css('display','block');
+	$('.dd').css('display','none');
+})
+	$('.nav .dd-left').hover(function(){
+		$(this).children('.pop').css('display','block');
+		$(this).children('.block').css('display','block');
+		$(this).css({
+			'background-color':'#fff',
+			'border-color':'#654579',
+		})
+	},function(){
+		$(this).children('.pop').css('display','none');
+		$(this).children('.block').css('display','none');
+		$(this).css({
+			'background-color':'#e8e3eb',
+			'border-color':'#e8e3eb'
+		})
+	})
+	$('.dd-left .pop').each(function(i){
+		$(this).css('top',-(120*i));
+	})
+})
+
+/*轮播图*/
+$(function(){
+	var $index = 0;
+	var timer = null;
+	function play(){
+		$('.slide li').eq($index).stop().animate({'display':'block','opacity':1}).siblings().stop().animate({'display':'none','opacity':0});
+		$('.page li').eq($index).addClass('on').siblings().removeClass('on');
+	}
+	$('.slide').hover(function(){
+		clearInterval(timer);
+	},function(){
+		timer = setInterval(function(){
+		$index++;
+			if($index > 2){
+				$index = 0;
+			}
+		play();
+		},1000);
+	})
+	$('.page li').on('click',function(){
+		$index = $(this).index();
+		play();
+	})
+	timer = setInterval(function(){
+		$index++;
+		if($index > 2){
+			$index = 0;
+		}
+		play();
+	},3000);
+})
+
+/*今日上新tab切换*/
+$(function(){
+	var flag = false;
+	$('.change').on('click',function(){
+		if(flag == false){
+			$('.ul1,.ul1-1').hide();
+			$('.ul2,.ul2-1').show();
+			flag = true;	
+		}else{
+			$('.ul2,.ul2-1').hide();
+			$('.ul1,.ul1-1').show();
+			flag = false;
+		}
+		
+	})
+	$('.new-box ul li').hover(function(){
+		$(this).find('.add').show();
+	},function(){
+		$(this).find('.add').hide();
+	})
+})
+
+/*手风琴效果*/
+$(function(){
+	$('.buy-list dd').hover(function(){
+		//console.log($('.buy-list dd').size());
+		$(this).removeClass('ex-first').addClass('first').siblings('dd').removeClass('first').addClass('ex-first');
+	}/*,function(){
+		//console.log($('.buy-list dl dd:first').size());
+	}*/)
+})
+/*倒计时*/
+$(function(){
+	function double(v){
+		return v < 10 ? '0'+ v : v;
+	}
+	show_time();
+	setInterval(show_time,1000);
+	function show_time(){
+		var time_start = new Date().getTime();//设定当前时间
+		var time_end = new Date('2016/11/11 00:00:00').getTime();//设定目标时间
+		//计算时间差
+		var time_distance = time_end - time_start;
+		//时
+		var time_hour = Math.floor(time_distance/3600000);
+		time_distance -= time_hour*3600000;
+		//分
+		var time_min = Math.floor(time_distance/60000);
+		time_distance -= time_min*60000;
+		//秒
+		var time_sec = Math.floor(time_distance/1000);
+		//显示时间
+		$('.time_hour').text(double(time_hour));
+		$('.time_min').text(double(time_min));
+		$('.time_sec').text(double(time_sec));
+
+	}
 })

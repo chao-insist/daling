@@ -6,8 +6,13 @@
 	<link rel="stylesheet" href="../css/main.css">
 	<link rel="stylesheet" href="../css/common.css">
 	<script type="text/javascript" src="../js/lib/jquery-1.8.3.js"></script>
-	<script type="text/javascript" src="../js/request.js"></script>
+	<script type="text/javascript" src="../js/lib/cookie.js"></script>
 	<script type="text/javascript" src="../js/login.js"></script>
+	<script>
+		$(function(){
+			$('#footer').load('footer.html');
+		})
+	</script>
 </head>
 <body>
 	<div id="login-header">
@@ -30,7 +35,14 @@
 							<label for="txt-login" class="icon">
 								<span class="icon-txt"></span>
 							</label>
-							<input type="text" id="txt-login" class="txt" placeholder="请输入您的手机号码">		
+							<input type="text" id="txt-login" class="txt" placeholder="请输入您的手机号码">
+							<span class="tip">
+								请输入手机号
+								<i></i>
+							</span>	
+							<span class="tip">				请输入正确的手机号
+								<i></i>
+							</span>		
 						</div>
 						<div class="pass">
 							<label for="pas-login" class="icon">
@@ -41,6 +53,8 @@
 						<p>
 							<a href="javascript:;">忘记密码？</a>
 						</p>
+						<p class="err no-exit">*用户名不存在</p>
+						<p class="err no-match">*您输入的密码和账户名不匹配</p>
 						<button type="submit" class="submit">登录</button>
 					</form>
 					<!-- 注册 -->

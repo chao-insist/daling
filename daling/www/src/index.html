@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
+	<link rel="short cut icon" href="img/bitbug_favicon (1).ico"/>
 	<title>Document</title>
 	<link rel="stylesheet" href="css/main.css">
 	<link rel="stylesheet" href="css/common.css">
@@ -10,23 +11,199 @@
 	<script type="text/javascript" src="js/index.js"></script>
 	<!-- <script type="text/javascript" src="js/lib/public.js"></script> -->
 </head>
-<body style="height: 5000px">
+	<script>
+	$(function(){
+		$('#header').load('html/header.html');
+		$('#footer').load('html/footer.html');
+		$.getScript('js/index.js');
+	})
+
+	</script>
+<body >
+
 	<div id="header"></div>
+	<div id="index">
+		<div class="ad">
+			<div class="carousel">
+				<ul class="slide">
+					<li style="display: block;opacity: 1;background: rgb(248,210,202)">
+						<a href="javascript:;">
+							<img src="img/14770329948931.png" alt="">
+						</a>
+					</li>
+					<li style="background: rgb(245,223,201);">
+						<a href="javascript:;">
+							<img src="img/14770303985309.png" alt="">
+						</a>
+					</li>
+					<li style="background: rgb(185,156,222);">
+						<a href="javascript:;">
+							<img src="img/14770395678901.png" alt="">
+						</a>
+					</li>
+				</ul>
+				<ol class="page">
+					<li class="on">1</li>
+					<li>2</li>
+					<li>3</li>
+				</ol>
+			</div>
+		</div>
+		<div class="main">
+			<div class="index-title">
+				<p>发现·好货</p>
+			</div>
+			<!--今日必看-->
+			<div class="index-must">
+				<h2>
+					<span class="icon must-icon"></span>
+					今日必看
+					<span class="f14 p28">每天逛一圈</span>
+				</h2>
+				<ul class="must-box">
+					<li>
+						<a href="javascript:;">
+							<img src="img/14770322586084.jpg" alt="">
+						</a>
+					</li>
+					<li>
+						<a href="javascript:;">
+							<img src="img/14770332257194.jpg" alt="">
+						</a>
+					</li>
+				</ul>
+			</div>
+			<!--今日上新-->
+			<div class="index-new">
+				<h2>
+					<span class="icon must-icon"></span>
+					今日上新
+					<span class="f14 p28">早8点上新</span>
+					<a href="javascript:;" class="change">
+					换一批
+						<span class="icon-refresh"></span>
+					</a>
+				</h2>
+				<div class="new-box">
+					<ul class="ul1"></ul>
+					<ul class="ul1-1"></ul>
+					<ul class="ul2"></ul>
+					<ul class="ul2-1"></ul>
+				</div>
+			</div>
+			<!--神马值得买-->
+			<div class="index-deserve">
+				<h2>
+					<span class="icon deserve-icon"></span>
+					神马值得买
+					<span class="f14 p28">帮你挑选全球好货</span>
+				</h2>
+				<h3>
+					<span class="icon-title"></span>
+					全球好货
+				</h3>
+				<div class="deserve-box">
+					<ul>
+						
+					</ul>
+				</div>
+			</div>
+			<!--大家都说好-->
+			<h3>
+				<span class="icon-title"></span>
+				大家都说好
+			</h3>
+			<div class="index-good">
+				<ul class="good-tab">
+					<li class="current">全部商品</li>
+					<li>极致美护</li>
+					<li>全球零食</li>
+					<li>创意生活</li>
+					<li>时尚配饰</li>
+					<li>3C数码</li>
+				</ul>
+				<div class="good-list">
+					<ul class="all-goods">
+						
+					</ul>	
+				</div>
+			</div>
+			<!--买了又买-->
+			<h3>
+				<span class="icon-title"></span>
+				买了又买
+			</h3>
+			<div class="index-buy-again">
+				<div class="buy-list">
+					<dl class="dl1">
+						<dt>极致美护</dt>
+					</dl>
+					<dl class="dl2">
+						<dt>全球零食</dt>
+					</dl>
+					<dl class="dl3">
+						<dt>创意生活</dt>
+					</dl>
+				</div>
+			</div>
+			<!--新品黑马-->
+			<h3>
+				<span class="icon-title"></span>
+				新品黑马
+			</h3>
+			<div class="index-newgood">
+				<div class="good-list">
+					<ul class="newest-goods">
+						
+					</ul>
+				</div>
+			</div>
+			<!--今日闪购-->
+			<div class="index-title">
+				<p>今日特卖·闪购</p>
+			</div>
+			<div class="index-sale">
+				<h2>
+					<span class="icon time-icon"></span>
+					今日闪购
+					<span class="f14 p28">每天都有惊喜最低5折</span>
+				</h2>
+				<div class="index-sale-list">
+					<ul>
+						
+					</ul>
+				</div>
+				<div class="index-tomorrow">
+					<div class="tomorrow-title">
+						闪购预告
+						<p class="tomorrow-tip">(今晚 20:00 火爆开售)</p>
+					</div>
+					<ul>
+
+					</ul>
+					<div class="flash-scroll">
+						<div class=" scroll up"></div>
+						<div class="scroll  down"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 	<div id="footer"></div>
 	<div id="sidebar">
 		<div class="sidebar-fix">
-			<div class="shopcar">
+			<div class="shopcar shopcarer">
 				<p class="cut-line"></p>
 				<span class="icon-cart"></span>
 				<p class="name">购<br/>物<br/>车</p>
 				<span class="count">0</span>
 			</div>
 			<p class="cut-line"></p>
-			<div class="discount">
+			<div class="discount discounter">
 				<span class="money"></span>
 				<span class="pop">我的优惠券<i></i></span>
 			</div>
-			<div class="collect">
+			<div class="collect collector">
 				<span class="heart"></span>
 				<span class="pop">我的收藏<i></i></span>
 			</div>
@@ -71,5 +248,6 @@
 			</div>
 		</div>
 	</div>
+	
 </body>
 </html>
