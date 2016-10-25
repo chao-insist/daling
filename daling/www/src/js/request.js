@@ -85,7 +85,7 @@ $(function(){
 		for(var i = 0;i < data8.length;i++){
 			var str8 = '<li><a href="javascript:;" class="cover-img" style="background-image: url('+data8[i].img+')"></a><div class="data"><p class="title"><span class="discount">'+data8[i].discount+'折</span><a href="javascript:;">'+data8[i].title+'</a></p><p class="intro">'+data8[i].intro+'</p><div class="function"><a href="javascript:;"><span class="icon-collect"></span>收藏<button class="btn-cart">加入购物车</button></a></div></div></li>';
 			$('.index-tomorrow ul').append(str8);
-		}
+		};
 	}).fail(function(){
 		console.log(1);
 	})

@@ -1596,6 +1596,7 @@
 		    height: 379px;
 		    border: 1px solid #e5e5e5;
 		    position: relative;
+		    overflow: hidden;
 		    img{
 		    	    width: 379px;
     				height: 379px;
@@ -1620,6 +1621,9 @@
 			overflow: hidden;
 			border: 1px solid #f5f5f5;
 			display: none;
+			img{
+				position: absolute;
+			}
 		}
 	}
 	.share{
@@ -1935,4 +1939,313 @@
 			    cursor: pointer;
     			}
 	}
+}
+
+/*cart*/
+#cart{
+	width: 1020px;
+	@include center;
+	padding-bottom: 50px;
+	.cart-top{
+		@include clearfix;
+	}
+	.logo{
+		width: 280px;
+		height: 40px;
+		float: left;
+	}
+	.cart-step{
+		width: 615px;
+		height: 38px;
+		float: right;
+		margin-top: 10px;
+		border: 1px solid #e5e5e5;
+		@include clearfix;
+		li{
+			width: 205px;
+			height: 40px;
+			font-size: 14px;
+			line-height: 40px;
+			float: left;
+			position: relative;
+			color: #cacaca;
+			.triangle{
+				width: 0;
+				height: 0;
+				position: absolute;
+				border-width: 20px 11px;
+				border-style: solid;
+				right: -22px;
+				line-height: 0;
+				top: 0;
+				display: none;
+			}
+			.number{
+				width: 20px;
+				height: 20px;
+				display: inline-block;
+				border-radius: 50%;
+				background-color: #e5e5e5;
+				color: #fff;
+				line-height: 20px;
+				text-align: center;
+				margin: 0 10px 0 52px;
+				font-weight: 700;
+				font-family: arial;
+			}
+		}
+		.current{
+			background-color: #f25e5a;
+			color: #fff;
+			z-index: 1;
+			.triangle{
+				border-color: transparent transparent transparent #f35e5a;
+				display: block;
+			}
+			.number{
+				background-color: #fff;
+				color: #f25e5a;
+			}
+		}
+	}
+	.data-empty{
+		width: auto;
+		height: 160px;
+		margin: 0 auto 50px;
+		padding-left: 320px;
+		td{
+			padding-top: 100px;
+			strong{
+				width: 80px;
+				height: 71px;
+				display: block;
+				float:left;
+				margin-right: 30px;
+				background: url(../img/ico-cart-empty.png) no-repeat; 
+			}
+			a{
+				margin-top: 10px;
+				float: left;
+				font-size: 12px;
+				color: #384188;
+			}
+		}
+	}
+	.cart-table{
+		padding-top: 60px;
+		.cart-thead{
+			height: 38px;
+			line-height: 38px;
+			border: 1px solid #ccc;
+			@include clearfix;
+			li{
+				text-align: center;
+				float: left;
+			}
+			.th-check{
+				width: 100px;
+				text-align: left;
+				input{
+					margin-left: 18px;
+					margin-right: 16px;
+					position: relative;
+					top: 2px;
+				}
+			}
+			.th-name{
+				width: 440px;
+			}
+			.th-price{
+				width: 120px;
+			}
+			.th-number{
+				width: 116px;
+			}
+			.th-total{
+				width: 128px;
+			}
+			.th-handle{
+				float: none;
+			}
+		}
+		.cart-list{
+			margin-top: 20px;
+			border: 1px solid #e5e5e5;
+			padding-bottom: 20px;
+			@include clearfix;
+			ul{
+				@include clearfix;
+			}
+			li{
+				float: left;
+				padding-top: 20px;
+			}
+			.td-check{
+				width: 52px;
+				text-align: center;
+			}
+			.td-good{
+				width: 486px;
+				position: relative;
+				@include clearfix;
+				.cover{
+					width: 78px;
+					height: 78px;
+					float: left;
+					border: 1px solid #e5e5e5;
+					margin-right: 20px;
+					background-position: center;
+					background-size: cover;
+				}
+				.name{
+					line-height: 20px;
+					overflow: hidden;
+					float: none;
+				}
+				.title{
+					overflow: hidden;
+					line-height: 20px;
+				}
+			}
+			.td-price{
+				width: 120px;
+				text-align: center;
+				.price{
+					font-size: 16px;
+				}
+			}
+			.td-number{
+				width: 98px;
+				padding-right: 10px;
+				padding-left: 10px;
+				@include clearfix;
+				a{
+					width: 28px;
+					height: 28px;
+					line-height: 28px;
+					text-align: center;
+					border: 1px solid #e5e5e5;
+					border-right: none 0;
+					display: block;
+					margin-right: 0;
+					float: left;
+				}
+				input{
+					width: 38px;
+					height: 28px;
+					line-height: 28px;
+					text-align: center;
+					padding: 0;
+					float: left;
+					border:1px solid #e5e5e5;
+				}
+				.f1{
+					font-size: 26px;
+				}
+				.btn-add{
+					border-right:1px solid #e5e5e5;
+					border-left: none 0; 
+				}
+				.ico-reduce{
+					background:url(../img/ico_symbol.png) no-repeat -3px -22px;
+					width: 12px;
+					height: 12px;
+					display: inline-block;
+					vertical-align: middle;
+					margin-top: 8px;
+				}
+				.ico-add{
+					background:url(../img/ico_symbol.png) no-repeat -24px -17px;
+					width: 12px;
+					height: 12px;
+					display: inline-block;
+					vertical-align: middle;
+					margin-top: -2px;
+				}
+			}
+			.td-total{
+				color: #e14958;
+				width: 128px;
+				text-align: center;
+				.total{
+					font-size: 16px;
+				}
+			}
+			.td-handle{
+				text-align: center;
+				overflow: hidden;
+				float: none;
+				line-height: 20px;
+				a{
+					display: inline-block;
+				}
+			}
+		}
+		.check{
+			width: 14px;
+			height: 14px;
+			vertical-align: middle;
+		}
+	}
+	.total-box{
+		height: 58px;
+		border: 1px solid #ccc;
+		width: 1018px;
+		@include center;
+		background-color: #f2f2f2;
+		@include clearfix;
+		.sel-all{
+			width: 100px;
+			padding-top: 10px;
+			float: left;
+			input{
+				vertical-align: middle;
+				margin: 14px 10px 16px 18px;
+			}
+		}
+		.option{
+			padding-top: 22px;
+			float: left;
+			a{
+				margin-right: 40px;
+			}
+		}
+		.tool-bar{
+			float: right;
+			width: 590px;
+			.ammount{
+				float: left;
+				padding-top: 20px;
+				padding-right: 32px;
+				margin-right: 180px;
+				.redal{
+					color: #e14958;
+				}
+			}
+			.total-count{
+				float: left;
+				padding-right: 18px;
+				padding-top: 10px;
+				line-height: 20px;
+				.all span{
+					color: #e14958;
+					.f20{
+						font-size: 20px;
+					}
+				}
+			}
+			.clearing{
+				display: inline-block;
+				width: 120px;
+				float: right;
+				line-height: 60px;
+				text-align: center;
+				color: #fff;
+				background-color: #f25e5a;
+				font-size: 18px;
+				margin-top: -1px;
+			}
+		}
+	}
+	
 }
