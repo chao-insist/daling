@@ -57,6 +57,8 @@ $(function(){
 
 /*验证注册*/
 $(function(){
+	$.cookie.json = true;
+	$.cookie.raw = true;
 	/*验证码*/
 	function verification(){
 		var arrImg = [];
@@ -183,10 +185,11 @@ $(function(){
 		var $name = $('#txt-register').val();
 		var $pass = $('#pas-register').val();
 		//console.log($name);
-		oCookie.addCookie('name',$name,40);
-		oCookie.addCookie('password',$pass,40);
+		//$.cookie.raw = true;
+		//$.cookie.json = true;
+		$.cookie('login',{name:$name,pass:$pass},{expires:30,path:'/'});
+		
 	})
-
 	/*登录*/
 
 	$('.login-form').submit(function(){
@@ -207,12 +210,13 @@ $(function(){
 			}
 			/*console.log(oCookie.getCookie('name') );
 			return false;*/
-			var $getName = oCookie.getCookie('name');
-			var $getPass = oCookie.getCookie('password');
+			var $getName = $.cookie('login').name;
+			var $getPass = $.cookie('login').pass;
 		if($('#txt-login').val() ==  $getName && $('#pas-login').val() == $getPass){
 			$('.err').css('display','none');
 			//alert('登录成功')
 			window.open('../index.html');
+			$.cookie('ready','',{expires:30,path:'/'});
 		}else if($('#txt-login').val() ==  $getName && $('#pas-login').val() != $getPass){
 			$('.no-match').css('display','block').siblings('.err').css('display','none');
 			return false;

@@ -12,18 +12,41 @@
 	<script type="text/javascript" src="../js/cart.js"></script>
 	<script type="text/javascript">
 		$(function(){
-			$('#header').load('header.html');
+			$('#header').load('header.html',function(){
+				if($.cookie('ready') != null){
+					var loginStatus = '<a href="javascript:;">欢迎您，'+$.cookie('login').name+'</a><a href="javascript:;">[退出]</a><span class="line">|</span><a href="javascript:;">我的订单</a><span class="line">|</span><a href="html/cart.html">购物车</a><span class="line">|</span><a href="javascript:;">我的收藏</a><span class="line">|</span><span><span class="phone"></span>400-080-1888<span class="line">|</span></span><a href="javascript:;">下载达令APP<div class="da-code"><span class="code"></span><span class="arrow"></span></div></a>';
+					$('.top-right').empty();
+					$('.top-right').append(loginStatus);
+				}
+
+			});
 			$('#footer').load('footer.html');
-			$.getScript('../js/index.js');
+			$.getScript('../js/index.js',function(){
+				$('img').each(function(){
+					//console.log($(this).attr('src'));
+					var str = $(this).attr('src');
+					str = '../'+str;
+					//console.log(str);
+					$(this).attr('src',str);
+				})
+			});
 		})
 	</script>
 </head>
 <body>
 	<div id="header"></div>
+	<div class="shade"></div>
+	<div class="pop-window">
+		<div class="title">添加购物车成功<span class="close">x</span></div>
+		<div class="cont">
+			<a href="javascript:;" class="stay">留在此页</a>
+			<a href="cart.html" class="go-cart">去购物车看看</a>
+		</div>
+	</div>
 	<div class="detail">
 		<div class="detail-link">
 			<ul>
-				<li><a href="javascript:;"><span class="icon-home"></span></a><span class="icon-to"></span></li>
+				<li><a href="../index.html"><span class="icon-home"></span></a><span class="icon-to"></span></li>
 				<li><a href="javascript:;">极致美护</a><span class="icon-to"></span></li>
 				<li><a href="javascript:;">面部护肤</a><span class="icon-to"></span></li>
 				<li><a href="javascript:;">美妆工具</a><span class="icon-to"></span></li>
@@ -34,14 +57,15 @@
 			</ul>
 		</div>
 		<div class="detail-main">
+
 			<div class="detail-left">
 				<div class="goods-show">
 					<div class="good-img">
-						<img src="../img/14367677109668.jpg" alt="">
+						<img src="img/14367677109668.jpg" alt="">
 						<div class="move"></div>
 					</div>
 					<div class="img-box">
-						<img src="../img/mirol.jpg" alt="">
+						<img src="img/mirol.jpg" alt="">
 					</div>
 					<div class="share">
 						<a href="javascript:;" class="share-box"><span class="icon-share"></span>分享</a>
@@ -138,7 +162,9 @@
 			</div>
 		</div>
 	</div>
-	
+	<div id="bg">
+		<img src="img/bg123.jpg" alt="">
+	</div>
 	<div id="footer"></div>
 </body>
 </html>

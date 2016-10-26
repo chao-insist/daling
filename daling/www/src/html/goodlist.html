@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" href="../css/main.css">
+	<link rel="stylesheet" href="../css/common.css">
+	<script type="text/javascript" src="../js/lib/jquery-1.8.3.js"></script>
+	<script type="text/javascript" src="../js/goods.js"></script>
+	<script>
+		$(function(){
+			$('#header').load('header.html');
+			$.getScript('../js/index.js');
+			$('#footer').load('footer.html');
+		})
+	</script>
+</head>
+<body>
+	<div id="header"></div>
+	<div id="da-search">
+		<div class="search-link">
+			<ul>
+				<li>
+					<a href="javascript:;">
+						<span class="icon-home"></span>
+					</a>
+					<span class="icon-to"></span>
+				</li>
+				<li>
+					<a href="javascript:;" class="sort">
+						<span class="sort-name">极致美护</span>
+						<span class="ico-sort-ar">
+							<span class="up"></span>
+							<span class="down"></span>
+						</span>
+						<span class="drop">
+							<ul>
+								<li>3C家电</li>
+								<li>尖货女装</li>
+								<li>时尚配饰</li>
+								<li>创意生活</li>
+								<li>全球零食</li>
+								<li>极致美护</li>
+							</ul>
+						</span>
+					</a>
+					<span class="icon-to"></span>
+				</li>
+				<li>
+					<a href="javascript:;" class="sort">
+						<span class="sort-name">面部护肤</span>
+						<span class="ico-sort-ar">
+							<span class="up"></span>
+							<span class="down"></span>
+						</span>
+						<span class="drop">
+							<ul>
+								<li>3C家电</li>
+								<li>尖货女装</li>
+								<li>时尚配饰</li>
+								<li>创意生活</li>
+								<li>全球零食</li>
+								<li>极致美护</li>
+							</ul>
+						</span>
+					</a>
+					<span class="icon-to"></span>
+				</li>
+				<li>
+					<a href="javascript:;" class="sort">
+						<span class="sort-name">面膜呵护</span>
+						<span class="ico-sort-ar">
+							<span class="up"></span>
+							<span class="down"></span>
+						</span>
+						<span class="drop">
+							<ul>
+								<li>3C家电</li>
+								<li>尖货女装</li>
+								<li>时尚配饰</li>
+								<li>创意生活</li>
+								<li>全球零食</li>
+								<li>极致美护</li>
+							</ul>
+						</span>
+					</a>
+					<span class="icon-to"></span>
+				</li>
+				<li>
+					<div class="sort">
+						<input type="text" class="search-input">
+						<button class="ico-search"></button>
+					</div>
+				</li>
+			</ul>
+		</div>
+		<div class="condition">
+			<ul>
+				<li>
+					<a href="javascript:;" class="title">达令力荐：</a>
+					<a href="javascript:;">告别干燥深补水</a>
+					<a href="javascript:;">轻松卸妆神器</a>
+					<a href="javascript:;">清新女神装</a>
+					<a href="javascript:;">晒不黑的秘密</a>
+				</li>
+				<li>
+					<a href="javascript:;" class="title">功效：</a>
+					<a href="javascript:;">抗皱</a>
+					<a href="javascript:;">香气持久</a>
+					<a href="javascript:;">淡化唇色</a>
+					<a href="javascript:;">深层清洁</a>
+					<a href="javascript:;">遮瑕</a>
+					<a href="javascript:;">清新</a>
+					<a href="javascript:;">去黑头</a>
+				</li>
+				<li>
+					<a href="javascript:;" class="title">地区：</a>
+					<a href="javascript:;">韩国</a>
+					<a href="javascript:;">日本</a>
+					<a href="javascript:;">欧美</a>
+					<a href="javascript:;">港台</a>
+					<a href="javascript:;">东南亚</a>
+				</li>
+				<li>
+					<a href="javascript:;" class="title">品牌：</a>
+					<a href="javascript:;">Innisfree</a>
+					<a href="javascript:;">Clinie</a>
+					<a href="javascript:;">montagne jeunesse</a>
+					<a href="javascript:;">one leaf</a>
+					<a href="javascript:;">UTENA</a>
+					<a href="javascript:;">肌美精</a>
+					<a href="javascript:;">SEXYLOOK</a>
+				</li>
+				<li>
+					<a href="javascript:;" class="title">价格：</a>
+					<a href="javascript:;">0-50</a>
+					<a href="javascript:;">50-100</a>
+					<a href="javascript:;">100-150</a>
+					<a href="javascript:;">500以上</a>
+				</li>
+			</ul>
+		</div>
+		<div class="sort-bar">
+			<div class="sortinner">
+				<span class="pr10">排序</span>
+				<a href="javascript:;">
+					默认
+					<span class="ico-sort-d ico-dr"></span>
+				</a>
+				<a href="javascript:;" class="pr10">
+					价格
+					<span class="ico-sort-d"></span>
+				</a>
+				<a href="javascript:;">
+					销量
+					<span class="ico-sort-d"></span>
+				</a>
+				<a href="javascript:;">
+					人气
+					<span class="ico-sort-d"></span>
+				</a>
+				<a href="javascript:;">
+					上架时间
+					<span class="ico-sort-d"></span>
+				</a>
+				<span class="stock">
+					<label for="">
+					<input type="checkbox">
+						只看有货
+					</label>
+				</span>
+			</div>
+			<div class="sortpage">
+				<p>
+					共<span class="red">597</span>个商品
+					<span class="line">|</span>
+					<span class="red">1</span>/15页
+					<a href="javascript:;">下一页</a>
+				</p>
+			</div>
+		</div>
+		<div class="searchlist">
+			<ul>
+				
+			</ul>
+		</div>
+	</div>
+	<div id="footer"></div>
+</body>
+</html>

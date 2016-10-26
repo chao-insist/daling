@@ -71,7 +71,29 @@ $(function(){
 		$('.num').val(count);
 	})
 	//$('.num').val(count);
-	
+	$('.add').on('click',function(){
+		$('.shade').css({
+			'width':$(document).width(),
+			'height':$(document).height(),
+			'display':"block"
+		});
+		$('.pop-window').css('display','block');
+		//var sc = $(window).scrollTop();
+		var l = ($(window).width() - $('.pop-window').width())/2;
+		var t = ($(window).height() - $('.pop-window').height())/2;
+		$('.pop-window').css({
+			'left': l+'px',
+			'top': t+'px'
+		})
+	})
+	$('.close').click(function(){
+		$(this).parents('.pop-window').css('display','none');
+		$('.shade').css('display','none');
+	})
+	$('.stay').click(function(){
+		$(this).parents('.pop-window').css('display','none');
+		$('.shade').css('display','none');
+	})
 })
 
 /*tab商品切换*/

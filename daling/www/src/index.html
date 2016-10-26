@@ -11,19 +11,52 @@
 	<script type="text/javascript" src="js/request.js"></script>
 	<script type="text/javascript" src="js/index.js"></script>
 	<script type="text/javascript" src="js/cart.js"></script>
+	<!-- <script type="text/javascript" src="js/login.js"></script> -->
 	<!-- <script type="text/javascript" src="js/lib/public.js"></script> -->
 </head>
 	<script>
 	$(function(){
-		$('#header').load('html/header.html');
+		//$.getScript('js/login.js');
+		// $('#header').load('html/header.html');
+		
 		$('#footer').load('html/footer.html');
 		$.getScript('js/index.js');
+
+		$.ajax({
+			url:'html/header.html',
+			type:'get',
+			datatype:'html'
+		}).done(function(data){
+			$('#header').append(data);
+			if($.cookie('ready') != null){
+				var loginStatus = '<a href="javascript:;">欢迎您，'+$.cookie('login').name+'</a><a href="javascript:;">[退出]</a><span class="line">|</span><a href="javascript:;">我的订单</a><span class="line">|</span><a href="html/cart.html">购物车</a><span class="line">|</span><a href="javascript:;">我的收藏</a><span class="line">|</span><span><span class="phone"></span>400-080-1888<span class="line">|</span></span><a href="javascript:;">下载达令APP<div class="da-code"><span class="code"></span><span class="arrow"></span></div></a>';
+				$('.top-right').empty();
+				$('.top-right').append(loginStatus);
+			}
+			
+		}).fail(function(){
+			console.log(2);
+		})
+		/*if($.cookie('ready')){
+			//$('.top-right').empty();
+			
+			$('.top-right').append(str);
+		}*/
 	})
 
 	</script>
 <body >
 
 	<div id="header"></div>
+	<ul class="staire">
+		<li>f1<span>今日必看</span></li>
+		<li>f2<span>今日上新</span></li>
+		<li>f3<span>今日好货</span></li>
+		<li>f4<span>你值得买</span></li>
+		<li>f5<span>买了又买</span></li>
+		<li>f6<span>今日黑马</span></li>
+		<li>f7<span>今日特卖</span></li>
+	</ul>
 	<div id="index">
 		<div class="ad">
 			<div class="carousel">
@@ -56,7 +89,7 @@
 				<p>发现·好货</p>
 			</div>
 			<!--今日必看-->
-			<div class="index-must">
+			<div class="index-must staires">
 				<h2>
 					<span class="icon must-icon"></span>
 					今日必看
@@ -76,7 +109,7 @@
 				</ul>
 			</div>
 			<!--今日上新-->
-			<div class="index-new">
+			<div class="index-new staires">
 				<h2>
 					<span class="icon must-icon"></span>
 					今日上新
@@ -94,7 +127,7 @@
 				</div>
 			</div>
 			<!--神马值得买-->
-			<div class="index-deserve">
+			<div class="index-deserve staires">
 				<h2>
 					<span class="icon deserve-icon"></span>
 					神马值得买
@@ -115,7 +148,7 @@
 				<span class="icon-title"></span>
 				大家都说好
 			</h3>
-			<div class="index-good">
+			<div class="index-good staires">
 				<ul class="good-tab">
 					<li class="current">全部商品</li>
 					<li>极致美护</li>
@@ -135,7 +168,7 @@
 				<span class="icon-title"></span>
 				买了又买
 			</h3>
-			<div class="index-buy-again">
+			<div class="index-buy-again staires">
 				<div class="buy-list">
 					<dl class="dl1">
 						<dt>极致美护</dt>
@@ -153,7 +186,7 @@
 				<span class="icon-title"></span>
 				新品黑马
 			</h3>
-			<div class="index-newgood">
+			<div class="index-newgood staires">
 				<div class="good-list">
 					<ul class="newest-goods">
 						
@@ -164,7 +197,7 @@
 			<div class="index-title">
 				<p>今日特卖·闪购</p>
 			</div>
-			<div class="index-sale">
+			<div class="index-sale staires">
 				<h2>
 					<span class="icon time-icon"></span>
 					今日闪购
@@ -227,6 +260,16 @@
 				<div class="cart-mini">
 					<div class="cart-table">
 						
+					</div>
+					<div class="cart-bar">
+						<p class="info">
+							共<span class="count"></span>件商品
+							&ensp;
+							共计<span class="ammount">￥
+							<span class="redal"></span></span>
+
+						</p>
+						<a href="html/cart.html" class="go-cart">去购物车</a>
 					</div>
 				</div>
 			</div>

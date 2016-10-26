@@ -1,4 +1,30 @@
 
+$(function(){
+	$('.close').click(function(){
+		$(this).parent('.tip').css('display','none');
+	})
+	$('.drop-down').hover(function(){
+		$(this).children('.da-code').toggle();
+	})
+})
+
+/*楼梯*/
+$(window).scroll(function(){
+	if($(this).scrollTop() > 700){
+		$('.staire').fadeIn();
+	}else{
+		$('.staire').fadeOut();
+	}
+})
+$('.staire li').click(function(){
+	$('.staire li').find('span').removeClass('active');
+	$(this).find('span').addClass('active');
+	var $index = $(this).index();
+	var $top = $('.staires').eq($index).offset().top;
+	$('html,body').stop().animate({scrollTop:$top},1000);
+})
+
+
 /*侧边栏效果*/
 //同一个元素绑定多个事件，使用on的链式操作
 
@@ -186,4 +212,37 @@ $(function(){
 		$('.time_sec').text(double(time_sec));
 
 	}
+	$('.sidebar-data .cart-list .cover').css('background-image','url(img/14367677109668.jpg)');
+})
+$(function(){
+	var count = 0;
+	$('.btn-reduce').click(function(){
+		count--;
+		if(count <=0){
+			count = 0;
+		}
+		$('.num-text').val(count);
+		getTotal();
+		//getCount();
+	})
+	$('.btn-add').click(function(){
+		count++;
+		$('.num-text').val(count);
+		getTotal();
+		//getCount();
+	})
+	$('.detach').click(function(){
+		$('.sidebar-data .cart-table').css('background','url(img/cart_mini_empty.png) no-repeat center 46px');
+		$('.cart-bar').css('display','none');
+		$.cookie('good',null,{expires:-1,path:'/'});
+	})
+	$('.sidebar-data .count').html($('.cart-list').length);
+	function getTotal(){
+		$('.sidebar-data .total,.sidebar-data .redal').html(parseInt($('.sidebar-data .price').html()*$('.num-text').val()).toFixed(2));
+		//console.log($('.sidebar-data .price').html())
+		$('.sidebar-data .count').html($('.num-text').val());
+	}
+	/*function getCount(){
+
+	}*/
 })
