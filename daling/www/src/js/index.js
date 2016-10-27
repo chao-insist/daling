@@ -1,6 +1,6 @@
 
 $(function(){
-	$('.close').click(function(){
+	$('.tip .close').click(function(){
 		$(this).parent('.tip').css('display','none');
 	})
 	$('.drop-down').hover(function(){
@@ -9,20 +9,44 @@ $(function(){
 })
 
 /*楼梯*/
-$(window).scroll(function(){
-	if($(this).scrollTop() > 700){
-		$('.staire').fadeIn();
-	}else{
-		$('.staire').fadeOut();
-	}
+$(function(){
+	var mark = 1;
+	$('.staire li').click(function(){	//点击li的时候跳到相应楼层
+		mark = 2;
+		$('.staire li').find('span').removeClass('active');
+		$(this).find('span').addClass('active');
+		var $index = $(this).index();
+		var $top = $('.staires').eq($index).offset().top;
+		$('html,body').stop().animate({scrollTop:$top},1000,function(){
+			mark = 1;
+		});
+	})
+	$(window).scroll(function(){
+		if(mark == 1){
+			var $t = $(this).scrollTop();
+			if($t > 500){
+				$('.staire').fadeIn();
+			}else{
+				$('.staire').fadeOut();
+			}
+			var $obj = $('.staires');
+			//console.log($obj)
+			$obj.each(function(){
+				var $index = $(this).index('body .staires');//返回对象在原先集合中的索引位置
+				var $h = $obj.eq($index).offset().top+$(this).height();
+				if($t < $h){
+					$('.staire li').find('span').removeClass('active');
+					$('.staire li').eq($index).find('span').addClass('active');
+					return false;	//跳出循环
+				}
+
+			})
+		}
+		
+	})
 })
-$('.staire li').click(function(){
-	$('.staire li').find('span').removeClass('active');
-	$(this).find('span').addClass('active');
-	var $index = $(this).index();
-	var $top = $('.staires').eq($index).offset().top;
-	$('html,body').stop().animate({scrollTop:$top},1000);
-})
+
+
 
 
 /*侧边栏效果*/
@@ -32,15 +56,16 @@ $(function(){
 	function toggle(obj){		//侧边栏缩进效果封装
 			if($('#sidebar').width() < 320){
 			$(obj).css('display','block').siblings('.show').css('display','none');
-			$('#sidebar').animate({'width':320},500,function(){
+			$('#sidebar').stop().animate({'width':320},500,function(){
 				$('.sidebar-data .close').show();
 			})
 		}else{
 			//判断如果显示的是当前点击的对象则关闭侧边栏。
 			if($(obj).is(':hidden')){
 				 $(obj).css('display','block').siblings('.show').css('display','none');
+				 //$('#sidebar').stop(true).animate(null);
 			}else{
-				$('#sidebar').animate({'width':40},500,function(){
+				$('#sidebar').stop().animate({'width':40},500,function(){
 					$('.show').css('display','none');
 					$('.sidebar-data .close').hide();
 				})
@@ -78,9 +103,7 @@ $(function(){
 		$(this).find('.pop').css('display','none');
 	})
 
-
-
-	$(window).scroll(function(){
+	$(window).scroll(function(){		//返回顶部
 		var t = $(this).scrollTop();
 		if(t > 1000){
 			$('.backtop').fadeIn();
@@ -101,7 +124,7 @@ $(function(){
 	$('.dd').css('display','block');
 },function(){
 	$('.icon-down').css('display','none').siblings().css('display','block');
-	$('.dd').css('display','none');
+	//$('.dd').css('display','none');
 })
 	$('.nav .dd-left').hover(function(){
 		$(this).children('.pop').css('display','block');
@@ -119,6 +142,7 @@ $(function(){
 		})
 	})
 	$('.dd-left .pop').each(function(i){
+		$('.dd-left .pop').eq(0).css('top','-1px');
 		$(this).css('top',-(120*i));
 	})
 })
@@ -131,7 +155,7 @@ $(function(){
 		$('.slide li').eq($index).stop().animate({'display':'block','opacity':1}).siblings().stop().animate({'display':'none','opacity':0});
 		$('.page li').eq($index).addClass('on').siblings().removeClass('on');
 	}
-	$('.slide').hover(function(){
+	$('.slide,ol.page li').hover(function(){
 		clearInterval(timer);
 	},function(){
 		timer = setInterval(function(){

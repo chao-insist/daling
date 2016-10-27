@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<link rel="short cut icon" href="img/bitbug_favicon (1).ico"/>
+	<link rel="shortcut icon" href="img/favicon.ico"/>
 	<title>Document</title>
 	<link rel="stylesheet" href="css/main.css">
 	<link rel="stylesheet" href="css/common.css">
@@ -16,23 +16,35 @@
 </head>
 	<script>
 	$(function(){
+		
 		//$.getScript('js/login.js');
 		// $('#header').load('html/header.html');
 		
 		$('#footer').load('html/footer.html');
-		$.getScript('js/index.js');
+			
 
 		$.ajax({
 			url:'html/header.html',
 			type:'get',
 			datatype:'html'
 		}).done(function(data){
+			$.getScript('js/index.js');
 			$('#header').append(data);
 			if($.cookie('ready') != null){
-				var loginStatus = '<a href="javascript:;">欢迎您，'+$.cookie('login').name+'</a><a href="javascript:;">[退出]</a><span class="line">|</span><a href="javascript:;">我的订单</a><span class="line">|</span><a href="html/cart.html">购物车</a><span class="line">|</span><a href="javascript:;">我的收藏</a><span class="line">|</span><span><span class="phone"></span>400-080-1888<span class="line">|</span></span><a href="javascript:;">下载达令APP<div class="da-code"><span class="code"></span><span class="arrow"></span></div></a>';
-				$('.top-right').empty();
-				$('.top-right').append(loginStatus);
+				var loginStatus = '<a href="javascript:;">欢迎您，'+$.cookie('login').name+'</a><a href="javascript:;" class="exit">[退出]</a><span class="line">|</span><a href="javascript:;">我的订单</a><span class="line">|</span><a href="html/cart.html">购物车</a><span class="line">|</span><a href="javascript:;">我的收藏</a><span class="line">|</span><span><span class="phone"></span>400-080-1888<span class="line">|</span></span><a href="javascript:;" class="drop-down">下载达令APP<div class="da-code"><span class="code"></span><span class="arrow"></span></div></a>';
+				var str = '<div class="tip">注册即得 新人专享用户券<span class="arrow"></span><a href="javascript:;" class="close">x</a></div><a href="html/login.html" class="login">登录</a><span class="line">|</span><a href="html/login.html" class="register">注册</a><span class="line">|</span><span><span class="phone"></span>400-080-1888<span class="line">|</span></span><a href="javascript:;"  class="drop-down">下载达令APP<div class="da-code"><span class="code"></span><span class="arrow"></span></div></a>';
+					$('.top-right').empty();
+					$('.top-right').append(loginStatus);
+					$('.exit').click(function(){
+						$('.top-right').empty();
+						$('.top-right').append(str);
+						$.getScript('js/index.js');
+						//$.cookie('login',null,{expires:-1,path:'/'});
+						$.cookie('ready',null,{expires:-1,path:'/'})
+					})
+					
 			}
+			$('.logo').attr('href','##');
 			
 		}).fail(function(){
 			console.log(2);
@@ -55,7 +67,7 @@
 		<li>f4<span>你值得买</span></li>
 		<li>f5<span>买了又买</span></li>
 		<li>f6<span>今日黑马</span></li>
-		<li>f7<span>今日特卖</span></li>
+		<li>f7<span>今日闪购</span></li>
 	</ul>
 	<div id="index">
 		<div class="ad">

@@ -3,14 +3,47 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Document</title>
+	<link rel="shortcut icon" href="../img/favicon.ico">
 	<link rel="stylesheet" href="../css/main.css">
 	<link rel="stylesheet" href="../css/common.css">
 	<script type="text/javascript" src="../js/lib/jquery-1.8.3.js"></script>
 	<script type="text/javascript" src="../js/goods.js"></script>
+	<script type="text/javascript" src="../js/lib/jquery.cookie.js"></script>
+	<script type="text/javascript" src="../js/login.js"></script>
 	<script>
 		$(function(){
-			$('#header').load('header.html');
-			$.getScript('../js/index.js');
+			$('#header').load('header.html',function(){
+				if($.cookie('ready') != null){
+					var loginStatus = '<a href="javascript:;">欢迎您，'+$.cookie('login').name+'</a><a href="javascript:;" class="exit">[退出]</a><span class="line">|</span><a href="javascript:;">我的订单</a><span class="line">|</span><a href="html/cart.html">购物车</a><span class="line">|</span><a href="javascript:;">我的收藏</a><span class="line">|</span><span><span class="phone"></span>400-080-1888<span class="line">|</span></span><a href="javascript:;">下载达令APP<div class="da-code"><span class="code"></span><span class="arrow"></span></div></a>';
+					var str = '<div class="tip">注册即得 新人专享用户券<span class="arrow"></span><a href="javascript:;" class="close">x</a></div><a href="login.html" class="login">登录</a><span class="line">|</span><a href="javascript:;" class="register">注册</a><span class="line">|</span><span><span class="phone"></span>400-080-1888<span class="line">|</span></span><a href="javascript:;"  class="drop-down">下载达令APP<div class="da-code"><span class="code"></span><span class="arrow"></span></div></a>';
+					$('.top-right').empty();
+					$('.top-right').append(loginStatus);
+					$('.exit').click(function(){
+						$('.top-right').empty();
+						$('.top-right').append(str);
+						$.cookie('login',null,{expires:-1,path:'/'});
+						$.cookie('ready',null,{expires:-1,path:'/'})
+					})
+				}
+				$('.login,.register').attr('href','login.html');
+				/*$('.register').click(function(){
+					window.location.href = 'login.html';
+					$.cookie('register','',{expires:30,path:'/'});
+				})*/
+				$('.register').attr('href','login.html');
+				$('.cart a').attr('href','cart.html');
+				$('.dd').css('display','none');
+			});
+			$.getScript('../js/index.js',function(){
+				$('.clasify').unbind('hover');
+				$('img').each(function(){
+					//console.log($(this).attr('src'));
+					var str = $(this).attr('src');
+					str = '../'+str;
+					//console.log(str);
+					$(this).attr('src',str);
+				})
+			});
 			$('#footer').load('footer.html');
 		})
 	</script>
@@ -21,7 +54,7 @@
 		<div class="search-link">
 			<ul>
 				<li>
-					<a href="javascript:;">
+					<a href="../index.html">
 						<span class="icon-home"></span>
 					</a>
 					<span class="icon-to"></span>

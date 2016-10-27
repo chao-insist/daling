@@ -83,28 +83,25 @@ $(function(){
 			}
 		}
 	}
-	/*用户名：失去焦点的时候判断	
-	按下enter键（13）的时候验证全部
-	用户名密码在得到焦点后为空弹出警告*/
-	function err(obj){
+	
+	function err(obj){	//验证出错时输入框的状态
 		$(obj).css({
 			'backgroundColor':'#fdf3fd',
 			'border-color':'#e14958'
 		});
 	}
-	function suceess(obj){
+	function suceess(obj){	//验证成功时输入框的状态
 		$(obj).css({
 			'backgroundColor':'#fff',
 			'border-color':'#ccc'
 		});
 	}
 	
-	$('#txt-register,#txt-login').on('blur',function(){
+	$('#txt-register,#txt-login').on('blur',function(){	//输入手机号匹配
 		var reg = /^1(3|4|5|7|8)\d{9}$/;
 		if(reg.test($(this).val())){
 			$(this).siblings('.tip').css('display','none');
 			suceess($(this));
-
 		}else {
 			if($(this).val().length == 0){
 				$(this).siblings('.tip').eq(1).css('display','none');
@@ -116,7 +113,25 @@ $(function(){
 			err($(this));
 		}
 	})
-	var flag = false;
+
+	$('.get-msg').click(function(){	//点击获取验证码
+		$(this).prop('disabled',true).css('backgroundColor','#ccc');
+		var count = 5;
+		var timer = null;
+		var _this = $(this);
+		$(this).html('剩余'+count+'秒');
+		timer = setInterval(function(){
+			count--;
+			_this.html('剩余'+count+'秒');
+			if(count <= 0){
+				_this.prop('disabled',false).css('backgroundColor','#94d469');
+				clearInterval(timer);
+				_this.html('获取验证码');
+			}
+			
+		},1000)
+	})	
+	/*var flag = false;
 	$('#agree').click(function(){
 		if(flag == false){
 			$('.submit').attr('disabled',false).css('backgroundColor','#e14958');
@@ -128,7 +143,18 @@ $(function(){
 			});
 			flag = false;
 		}
+	})*/		//点击协议注册按钮可用
+	$('#agree').click(function(){
+		if($(this).prop('checked')){
+			$('.submit').prop('disabled',false).css('backgroundColor','#e14958');
+		}else{
+			$('.submit').prop('disabled',true).css({
+				'backgroundColor':'#ccc',
+				'border':'none'
+			});
+		}
 	})
+		//提交注册
 	$('.register-form').submit(function(){
 		 if($('#pas-register,#txt-register,#very,#msg').val().length == 0){
 			$('#txt-register').focus();
@@ -193,6 +219,12 @@ $(function(){
 	/*登录*/
 
 	$('.login-form').submit(function(){
+		if($.cookie('login') == null){
+			$('.no-exit').css('display','block').siblings('.err').css('display','none');
+			return false
+		}else{
+			console.log(2);
+		}
 		var reg = /^1(3|4|5|7|8)\d{9}$/;
 			if(reg.test($('#txt-login').val())){
 				$('#txt-login').siblings('.tip').css('display','none');
@@ -215,16 +247,17 @@ $(function(){
 		if($('#txt-login').val() ==  $getName && $('#pas-login').val() == $getPass){
 			$('.err').css('display','none');
 			//alert('登录成功')
+			$.cookie('ready','123',{expires:30,path:'/'});
 			window.open('../index.html');
-			$.cookie('ready','',{expires:30,path:'/'});
 		}else if($('#txt-login').val() ==  $getName && $('#pas-login').val() != $getPass){
 			$('.no-match').css('display','block').siblings('.err').css('display','none');
 			return false;
 		}
-		else if($('#txt-login').val() !=  $getName){
+		else if($('#txt-login').val() !=  $getName || $('#txt-login').val('')){
 			$('.no-exit').css('display','block').siblings('.err').css('display','none');
 			return false;
 		}
+
 	})
 
 })

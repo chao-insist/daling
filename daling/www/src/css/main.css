@@ -211,6 +211,9 @@
   #nav .nav {
     width: 1200px;
     margin: 0 auto; }
+  #nav a:hover {
+    color: #e14958;
+    text-decoration: underline; }
 
 .nav .clasify {
   width: 220px;
@@ -373,7 +376,8 @@
     .navgation li a {
       color: #fff; }
       .navgation li a:hover {
-        color: #c4c4c4; }
+        color: #c4c4c4 !important;
+        text-decoration: none !important; }
 
 /*footer*/
 .why {
@@ -965,17 +969,18 @@
   color: #a00;
   font-size: 15px !important; }
 
+/*staire*/
 .staire {
   width: 50px;
   height: 357px;
   position: fixed;
   left: 0;
   bottom: 50px;
-  border: 1px solid #ee8833;
   z-index: 20000;
   background: aqua;
   overflow: hidden;
-  display: none; }
+  display: none;
+  border-radius: 20px; }
   .staire li {
     width: 50px;
     height: 50px;
@@ -990,6 +995,9 @@
       display: block;
       background: #ffee80;
       color: #ff3300; }
+    .staire li:hover span.active {
+      background-color: #e14958;
+      color: #fff; }
     .staire li span.active {
       display: block;
       background: #ffee80;
@@ -1003,10 +1011,16 @@
       top: 0;
       display: none; }
 
+/* index */
 #index {
   background-color: #f9f9f9;
   padding-bottom: 50px;
   min-width: 1200px; }
+  #index a:hover {
+    text-decoration: underline; }
+  #index .title:hover {
+    text-decoration: underline;
+    cursor: pointer; }
   #index .ad {
     height: 481px; }
     #index .ad .carousel {
@@ -2325,11 +2339,13 @@
         font-size: 18px;
         margin-top: -1px; }
 
-/*鍟嗗搧鍒楄〃*/
+/*goodlist*/
 #da-search {
   width: 1200px;
   margin: 0 auto;
   padding-bottom: 50px; }
+  #da-search a:hover {
+    text-decoration: underline; }
   #da-search .ico-sort-ar {
     position: absolute;
     right: 6px;
@@ -2375,6 +2391,8 @@
           padding-left: 8px;
           padding-right: 18px;
           white-space: nowrap; }
+          #da-search .search-link .sort .drop li:hover {
+            background: #ccc; }
     #da-search .search-link .up, #da-search .search-link .down {
       height: 0;
       line-height: 0;
@@ -2492,29 +2510,19 @@
         background-size: cover; }
       #da-search .searchlist ul li .data {
         padding: 8px 26px 0; }
-      #da-search .searchlist ul li .price {
-        padding-bottom: 8px;
-        /*  .redal{
-        	color: #e14958;
-        }
-        .now-price{
-        	    color: #e34755;
-        						    font-size: 20px;
-        						    padding-right: 4px;
-        						    margin-left: 3px;
-        }
-        .old-price{
-        	    text-decoration: line-through;
-        } */ }
-      #da-search .searchlist ul li .title {
-        overflow: hidden;
-        height: 38px;
-        line-height: 18px;
-        color: #666; }
-      #da-search .searchlist ul li .function {
-        padding-top: 8px;
-        font-size: 12px;
-        color: #999; }
+        #da-search .searchlist ul li .data .price {
+          padding-bottom: 8px; }
+        #da-search .searchlist ul li .data .title {
+          overflow: hidden;
+          height: 38px;
+          line-height: 18px;
+          color: #666; }
+          #da-search .searchlist ul li .data .title .discount {
+            color: #e34755; }
+        #da-search .searchlist ul li .data .function {
+          padding-top: 8px;
+          font-size: 12px;
+          color: #999; }
 
 .ico-sort-d {
   width: 9px;

@@ -14,11 +14,21 @@
 		$(function(){
 			$('#header').load('header.html',function(){
 				if($.cookie('ready') != null){
-					var loginStatus = '<a href="javascript:;">欢迎您，'+$.cookie('login').name+'</a><a href="javascript:;">[退出]</a><span class="line">|</span><a href="javascript:;">我的订单</a><span class="line">|</span><a href="html/cart.html">购物车</a><span class="line">|</span><a href="javascript:;">我的收藏</a><span class="line">|</span><span><span class="phone"></span>400-080-1888<span class="line">|</span></span><a href="javascript:;">下载达令APP<div class="da-code"><span class="code"></span><span class="arrow"></span></div></a>';
+					var loginStatus = '<a href="javascript:;">欢迎您，'+$.cookie('login').name+'</a><a href="javascript:;" calss="exit">[退出]</a><span class="line">|</span><a href="javascript:;">我的订单</a><span class="line">|</span><a href="html/cart.html">购物车</a><span class="line">|</span><a href="javascript:;">我的收藏</a><span class="line">|</span><span><span class="phone"></span>400-080-1888<span class="line">|</span></span><a href="javascript:;">下载达令APP<div class="da-code"><span class="code"></span><span class="arrow"></span></div></a>';
+					var str = '<div class="tip">注册即得 新人专享用户券<span class="arrow"></span><a href="javascript:;" class="close">x</a></div><a href="login.html" class="login">登录</a><span class="line">|</span><a href="login.html" class="register">注册</a><span class="line">|</span><span><span class="phone"></span>400-080-1888<span class="line">|</span></span><a href="javascript:;"  class="drop-down">下载达令APP<div class="da-code"><span class="code"></span><span class="arrow"></span></div></a>';
 					$('.top-right').empty();
 					$('.top-right').append(loginStatus);
+					$('.exit').click(function(){
+						$('.top-right').empty();
+						$('.top-right').append(str);
+						//$.cookie('login',null,{expires:-1,path:'/'});
+						$.cookie('ready',null,{expires:-1,path:'/'})
+					})
 				}
-
+				$('.login,.register').attr('href','login.html');
+				$('.dd').css('display','none');
+				//$('.clasify').unbind('hover');
+				$('.cart a').attr('href','cart.html');
 			});
 			$('#footer').load('footer.html');
 			$.getScript('../js/index.js',function(){
@@ -29,6 +39,7 @@
 					//console.log(str);
 					$(this).attr('src',str);
 				})
+				$('.clasify').unbind('hover');
 			});
 		})
 	</script>

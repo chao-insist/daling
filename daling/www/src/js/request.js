@@ -45,7 +45,7 @@ $(function(){
 		for(var i = 0;i < data1.length;i++){
 			//console.log(data1[1]);
 			var str = '<li><a style="background-image:url('+data1[i].img+')"><div class="add">加入购物车<span class="icon-cart"></span></div></a><div class="data"><p class="price"><span class="collect">人收藏</span><span class="redal">￥</span><span class="now-price">'+data1[i].price+'</span><span class="old-price">'+data1[i].old+'</span></p><p class="title"><span class="discount">'+data1[i].discount+'折/</span><a href="javascript:;">'+data1[i].info+'</a></p></div></li>';
-			var str1 = '<li class="bot"><div class="sign"><img src="" alt="" /></div><a  href="'+data1[i].href+'" class="new-img" style="background-image:url('+data1[i].img+')"><div class="add">加入购物车<span class="icon-cart"></span></div></a><div class="data"><p class="price"><span class="collect">人收藏</span><span class="redal">￥</span><span class="now-price">'+data1[i].price+'</span><span class="old-price">'+data1[i].old+'</span></p><p class="title"><span class="discount">'+data1[i].discount+'折/</span><a href="javascript:;">'+data1[i].info+'</a></p></div></li>'
+			var str1 = '<li class="bot"></div><a  href="'+data1[i].href+'" class="new-img" style="background-image:url('+data1[i].img+')"><div class="add">加入购物车<span class="icon-cart"></span></div></a><div class="data"><p class="price"><span class="collect">人收藏</span><span class="redal">￥</span><span class="now-price">'+data1[i].price+'</span><span class="old-price">'+data1[i].old+'</span></p><p class="title"><span class="discount">'+data1[i].discount+'折/</span><a href="javascript:;">'+data1[i].info+'</a></p></div></li>'
 			if(i < 4){
 				$('.new-box .ul1').append(str);
 			}else{
